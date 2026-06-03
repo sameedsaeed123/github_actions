@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub Actions — Automate Everything</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Noise Overlay -->
+  <div class="noise"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      <span>GitHub Actions</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#what">What</a></li>
+      <li><a href="#how">How</a></li>
+      <li><a href="#concepts">Concepts</a></li>
+      <li><a href="#workflow">Workflow</a></li>
+      <li><a href="#usecases">Use Cases</a></li>
+    </ul>
+    <button class="nav-cta" onclick="window.open('https://docs.github.com/en/actions','_blank')">Read Docs ↗</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero-tag">CI/CD · Automation · DevOps</div>
+    <h1 class="hero-title">
+      Automate<br/>
+      <span class="hero-accent">Everything.</span>
+    </h1>
+    <p class="hero-sub">GitHub Actions lets you build, test, and deploy your code directly from your repository — triggered by any event.</p>
+    <div class="hero-actions">
+      <a href="#what" class="btn-primary">Explore the Guide</a>
+      <a href="#workflow" class="btn-ghost">See a Workflow ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" data-target="50000">0</span><span>+ Marketplace Actions</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num" data-target="20">0</span><span>min free/month (public)</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num" data-target="100">0</span><span>% Git-native</span></div>
+    </div>
+  </section>
+
+  <!-- What is GitHub Actions -->
+  <section class="section" id="what">
+    <div class="section-label">01 — What is it?</div>
+    <div class="what-grid">
+      <div class="what-text">
+        <h2>Your repo.<br/>Your pipeline.</h2>
+        <p>GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform built directly into GitHub. It allows you to automate your build, test, and deployment pipeline from within your repository using simple YAML files.</p>
+        <p>No external CI server. No third-party integrations required. Your automation lives <em>alongside your code</em>.</p>
+      </div>
+      <div class="what-cards">
+        <div class="info-card" data-delay="0">
+          <div class="card-icon">⚡</div>
+          <h3>Event-Driven</h3>
+          <p>Trigger workflows on push, pull request, schedule, or any GitHub event.</p>
+        </div>
+        <div class="info-card" data-delay="100">
+          <div class="card-icon">📦</div>
+          <h3>Reusable Actions</h3>
+          <p>Use thousands of community-built actions from the GitHub Marketplace.</p>
+        </div>
+        <div class="info-card" data-delay="200">
+          <div class="card-icon">🌍</div>
+          <h3>Any Platform</h3>
+          <p>Run on Linux, macOS, Windows — or host your own self-hosted runners.</p>
+        </div>
+        <div class="info-card" data-delay="300">
+          <div class="card-icon">🔐</div>
+          <h3>Secure Secrets</h3>
+          <p>Manage API keys and tokens safely with encrypted secret storage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Concepts -->
+  <section class="section section-dark" id="concepts">
+    <div class="section-label">02 — Core Concepts</div>
+    <h2 class="section-title">The Building Blocks</h2>
+    <div class="concepts-grid">
+      <div class="concept-item" data-index="1">
+        <div class="concept-num">01</div>
+        <h3>Workflow</h3>
+        <p>A configurable automated process defined in a <code>.yml</code> file inside <code>.github/workflows/</code>. A repo can have multiple workflows.</p>
+      </div>
+      <div class="concept-item" data-index="2">
+        <div class="concept-num">02</div>
+        <h3>Event</h3>
+        <p>A specific activity that triggers a workflow — like a <code>push</code>, <code>pull_request</code>, <code>release</code>, <code>schedule</code>, or manual <code>workflow_dispatch</code>.</p>
+      </div>
+      <div class="concept-item" data-index="3">
+        <div class="concept-num">03</div>
+        <h3>Job</h3>
+        <p>A set of steps that run on the same runner. Jobs run in parallel by default, but can be chained with <code>needs:</code>.</p>
+      </div>
+      <div class="concept-item" data-index="4">
+        <div class="concept-num">04</div>
+        <h3>Step</h3>
+        <p>An individual task inside a job. Steps can run shell commands or invoke Actions. They share the same filesystem within a job.</p>
+      </div>
+      <div class="concept-item" data-index="5">
+        <div class="concept-num">05</div>
+        <h3>Action</h3>
+        <p>A reusable unit of code — either from the Marketplace, your repo, or inline. The atoms that compose powerful workflows.</p>
+      </div>
+      <div class="concept-item" data-index="6">
+        <div class="concept-num">06</div>
+        <h3>Runner</h3>
+        <p>The server that executes your jobs. GitHub provides hosted runners; you can also self-host for custom environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section" id="how">
+    <div class="section-label">03 — How It Works</div>
+    <h2 class="section-title">From Push to Deploy</h2>
+    <div class="pipeline">
+      <div class="pipeline-step active" data-step="0">
+        <div class="ps-icon">📝</div>
+        <div class="ps-content">
+          <h4>1. Code Push</h4>
+          <p>Developer pushes code to GitHub</p>
+        </div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step" data-step="1">
+        <div class="ps-icon">⚙️</div>
+        <div class="ps-content">
+          <h4>2. Event Fires</h4>
+          <p>GitHub detects the <code>push</code> event</p>
+        </div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step" data-step="2">
+        <div class="ps-icon">📋</div>
+        <div class="ps-content">
+          <h4>3. Workflow Triggered</h4>
+          <p>Matching <code>.yml</code> workflow starts</p>
+        </div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step" data-step="3">
+        <div class="ps-icon">🏃</div>
+        <div class="ps-content">
+          <h4>4. Runner Picks Up</h4>
+          <p>A runner claims the job queue</p>
+        </div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step" data-step="4">
+        <div class="ps-icon">✅</div>
+        <div class="ps-content">
+          <h4>5. Steps Execute</h4>
+          <p>Build, test, deploy steps run</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow Example -->
+  <section class="section section-dark" id="workflow">
+    <div class="section-label">04 — Real Workflow</div>
+    <h2 class="section-title">Anatomy of a Workflow</h2>
+    <div class="workflow-container">
+      <div class="workflow-tabs">
+        <button class="tab-btn active" data-tab="ci">CI Pipeline</button>
+        <button class="tab-btn" data-tab="deploy">Deploy to AWS</button>
+        <button class="tab-btn" data-tab="release">Auto Release</button>
+      </div>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span class="code-filename" id="code-filename">.github/workflows/ci.yml</span>
+          <button class="copy-btn" id="copy-btn">Copy</button>
+        </div>
+        <pre class="code-block" id="code-block"><code id="code-content"></code></pre>
+        <div class="code-annotations" id="code-annotations"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="section" id="usecases">
+    <div class="section-label">05 — Use Cases</div>
+    <h2 class="section-title">What Can You Automate?</h2>
+    <div class="usecases-grid">
+      <div class="usecase-card">
+        <span class="uc-emoji">🧪</span>
+        <h3>Testing</h3>
+        <p>Run unit, integration, and E2E tests on every PR automatically.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="uc-emoji">🚀</span>
+        <h3>Deployment</h3>
+        <p>Deploy to AWS, GCP, Azure, Vercel, or Heroku on merge to main.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="uc-emoji">📦</span>
+        <h3>Package Publishing</h3>
+        <p>Publish to npm, PyPI, Docker Hub, or GitHub Packages automatically.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="uc-emoji">🔍</span>
+        <h3>Code Quality</h3>
+        <p>Run linters, formatters, and security scans on every commit.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="uc-emoji">🏷️</span>
+        <h3>Release Management</h3>
+        <p>Auto-generate changelogs and create releases from tags.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="uc-emoji">🤖</span>
+        <h3>Issue Automation</h3>
+        <p>Auto-label, triage, and manage issues and pull requests.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub Actions Guide
+      </div>
+      <p>Built as a learning resource. Not affiliated with GitHub.</p>
+      <a href="https://docs.github.com/en/actions" target="_blank" class="footer-link">Official Documentation ↗</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
